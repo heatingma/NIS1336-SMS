@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/schedule.dir/sched_main.cpp.o CMakeFiles/schedule.dir/sched_manage.cpp.o -o schedule 

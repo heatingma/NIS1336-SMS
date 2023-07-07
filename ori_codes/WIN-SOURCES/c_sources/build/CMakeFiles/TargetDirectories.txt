@@ -1,0 +1,3 @@
+F:/github/NIS1336-SMS/ori_codes/WIN-SOURCES/c_sources/build/CMakeFiles/schedule.dir
+F:/github/NIS1336-SMS/ori_codes/WIN-SOURCES/c_sources/build/CMakeFiles/edit_cache.dir
+F:/github/NIS1336-SMS/ori_codes/WIN-SOURCES/c_sources/build/CMakeFiles/rebuild_cache.dir

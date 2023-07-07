@@ -1,0 +1,3 @@
+/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles/schedule.dir
+/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles/edit_cache.dir
+/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles/rebuild_cache.dir
