@@ -40,6 +40,7 @@ class TASK
         string get_name(void){return task_name;}
         string get_info(void);
         string print_info(void);
+        string print_check_info(void);
 
 
 };
@@ -65,7 +66,7 @@ class GUEST
         void printTask_by_type();
         void printTask_by_priority();
         bool deleteTask(int id);
-        void checktask();
+        int checktask();
         int get_max_id(){return max_id;}
 };
 

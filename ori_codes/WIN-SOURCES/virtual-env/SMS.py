@@ -250,9 +250,9 @@ class SM():
         self.add_button = Button(700, 200, 90, 30, "ADD", font=18, button_color='#dfeeee', text_color='black', border_color="#b0ceeb")
         self.delete_button = Button(800, 200, 90, 30, "DELETE", font=18, button_color='#dfeeee', text_color='black', border_color="#b0ceeb")
         self.tip_box = textBox(200, 520, 300, 30, font=18, color=self.screen_color, font_color='black')
-        self.remind_box = textBox(200, 200, 600, 300, font=20, color="gray", font_color='blue',
-                                  font_name='FONTS/STKAITI.TTF', ttf=True, bold=False)
-        self.ok_button = Button(720, 450, 50, 30, "OK", font=16, button_color='#dfeeee', text_color='black', border_color="#b0ceeb")
+        self.remind_box = textBox(300, 250, 400, 200, font=20, color="#dfeeee", font_color='blue',
+                                  font_name='FONTS/STKAITI.TTF', ttf=True, bold=False,border=True,border_color="blue")
+        self.ok_button = Button(630, 400, 50, 30, "OK", font=16, button_color='#dfeeee', text_color='black', border_color="#b0ceeb")
     
     def main_action(self):
         self.timer_box.input("TIME:")
@@ -271,11 +271,17 @@ class SM():
             elif self.timer.active:
                 self.timer.active = False
                 result = self.timer.shell_action(self.shell,self.user)
-                if result[:4] == "MISS" or result [:4] == "TODO":
+                if result[-6:-2] == "MISS" or result [-6:-2] == "TODO":
                     self.show_button.active = True
                     self.task_lists.clean_all()
                     self.show_state = False
-                    self.remind_box.input(result)
+                    if result[-6:-2] == "MISS":
+                        message = "错过提醒:\n"
+                    else:
+                        message = "任务提醒:\n"
+                    message += "任务名称       开始时间\n"
+                    message += result[:-6]
+                    self.remind_box.input(message)
                     self.ok_button.show = True
                     self.remind_box.show = True
             
@@ -658,7 +664,8 @@ class Button:
 class textBox:
     def __init__(self, x, y, w, h, font=20,color='white',font_color='black'
                  ,font_name="Times New Roman",ttf=False,x_format='center',y_format='center'
-                 ,x_space=5,y_space=5,border_radius=10,bold=True,italic=False):
+                 ,x_space=5,y_space=5,border_radius=10,bold=True,italic=False,
+                 border=False,border_width=2,border_color="black"):
         self.rect = pg.Rect(x, y, w, h)
         self.click =  False
         self.color = pg.Color(color)
@@ -669,6 +676,9 @@ class textBox:
         self.bold = bold
         self.italic = italic
         self.font_name = font_name
+        self.border = border
+        self.border_width = border_width
+        self.border_color = border_color
         if self.ttf:
             self.FONT = pg.font.Font(self.font_name,font)
             self.FONT.set_bold(self.bold)
@@ -721,36 +731,39 @@ class textBox:
                 self.text += letter             
            
     def draw(self, screen):
-        if self.show:
-            # 绘制带有弧度的矩形
+        if self.border:
+            border_rect = self.rect.copy()
+            border_rect.inflate_ip(self.border_width * 2, self.border_width * 2)
+            pg.draw.rect(screen, self.border_color, border_rect, border_radius=self.border_radius)
             pg.draw.rect(screen, self.color, self.rect, border_radius=self.border_radius)
-            
+        else:
+            pg.draw.rect(screen, self.color, self.rect, border_radius=self.border_radius)
             # 绘制文本
-            self.texts = []
-            current_text = ''
-            for i in range(len(self.text)):
-                if(self.text[i] != '\n'):
-                    current_text += self.text[i]
-                else:
-                    self.texts.append(current_text)
-                    current_text = ''
-            self.texts.append(current_text)
-            length = len(self.texts)
-            for i in range(length):
-                current_text = self.texts[i]
-                text_surface = self.FONT.render(current_text,True,self.font_color)
-                text_surface_rect = text_surface.get_rect()
-                if(self.x_format == 'center'):
-                    text_surface_rect.centerx = self.rect.centerx
-                elif(self.x_format == 'left'):
-                    text_surface_rect.x = self.rect.x + self.x_space
-                if(self.y_format == 'center'):
-                    space_height = (self.rect.h - length * text_surface_rect.h)/(length+1)
-                    text_surface_rect.y = self.rect.y + space_height*(i+1) + text_surface_rect.h*i
-                elif(self.y_format == 'up'):
-                    space_height = self.y_space
-                    text_surface_rect.y = self.rect.y + space_height*(i+1) + text_surface_rect.h*i
-                screen.blit(text_surface,text_surface_rect)
+        self.texts = []
+        current_text = ''
+        for i in range(len(self.text)):
+            if(self.text[i] != '\n'):
+                current_text += self.text[i]
+            else:
+                self.texts.append(current_text)
+                current_text = ''
+        self.texts.append(current_text)
+        length = len(self.texts)
+        for i in range(length):
+            current_text = self.texts[i]
+            text_surface = self.FONT.render(current_text,True,self.font_color)
+            text_surface_rect = text_surface.get_rect()
+            if(self.x_format == 'center'):
+                text_surface_rect.centerx = self.rect.centerx
+            elif(self.x_format == 'left'):
+                text_surface_rect.x = self.rect.x + self.x_space
+            if(self.y_format == 'center'):
+                space_height = (self.rect.h - length * text_surface_rect.h)/(length+1)
+                text_surface_rect.y = self.rect.y + space_height*(i+1) + text_surface_rect.h*i
+            elif(self.y_format == 'up'):
+                space_height = self.y_space
+                text_surface_rect.y = self.rect.y + space_height*(i+1) + text_surface_rect.h*i
+            screen.blit(text_surface,text_surface_rect)
               
 class ListBoxes:
     def __init__(self,x,y,w,h,title=None,title_font=24,font=20,color='white',font_color='black',

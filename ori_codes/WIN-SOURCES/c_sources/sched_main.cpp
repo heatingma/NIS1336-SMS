@@ -80,7 +80,11 @@ int main(int argc, char* argv[])
     if (strcmp(argv[1], "check_remind") == 0) {  
         user_name = argv[2];
         user = GUEST(user_name);
-        user.checktask();
+        check = user.checktask();
+        if (check == 1){
+            cout << "MISS" << endl;}
+        else if (check == 2){
+            cout << "TODO" << endl;}
         return 0;
     }
 }
