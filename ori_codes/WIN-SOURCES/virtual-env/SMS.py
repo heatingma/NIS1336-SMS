@@ -16,7 +16,7 @@ def check_event(button:list,input:list=None,dropdown:list=None,timedropdown:list
         elif event.type == pg.MOUSEBUTTONDOWN:
             mouse_x,mouse_y = pg.mouse.get_pos()
             for i in range(len(button)):
-                if button[i].show:
+                if button[i].show or button[i].force_check:
                     button[i].check_active(mouse_x,mouse_y)
             if lists:
                 for i in range(len(lists)):
@@ -182,7 +182,7 @@ class SM():
         self.acc_label = textBox(280, 200, 100, 30, font=20, color=self.screen_color, font_color='black')
         self.psw_label = textBox(280, 250, 100, 30, font=20, color=self.screen_color, font_color='black')
         self.acc_input = textBox(400, 200, 200, 30, font=24, color="#eeeeee", font_color='black', x_format='left')
-        self.psw_input = textBox(400, 250, 200, 30, font=24, color="#eeeeee", font_color='black', x_format='left')
+        self.psw_input = textBox(400, 250, 200, 30, font=24, color="#eeeeee", font_color='black', x_format='left',psw=True)
         self.sub_button = Button(650, 250, 100, 30, "Submit", font=16, button_color='silver', text_color='black', border_color='darkgray')
         self.tip_box = textBox(250, 310, 500, 40, font=18, color=self.screen_color, font_color='red')
         self.team_button = Button(400, 385, 200, 40, "TEAM", font=20, button_color='#afeeee', text_color='black', border_color="#87ceeb")
@@ -193,6 +193,8 @@ class SM():
     def menu_action(self):
         self.psw_label.input("Password:")
         self.acc_label.input("Account:")
+        self.sub_button.show = False
+        self.sub_button.force_check = True
         while(True):
             check_event(button = [self.sub_button,self.exit_button,self.team_button,self.login_button,\
                         self.help_button,self.register_button],input= [self.psw_input,self.acc_input])
@@ -447,19 +449,21 @@ class SM():
         self.info_box = textBox(250, 200, 500, 40, font=18, color=self.screen_color, font_color='blue')
         self.acc_label = textBox(250, 270, 130, 30, font=20, color=self.screen_color, font_color='black')
         self.psw_label = textBox(250, 320, 130, 30, font=20, color=self.screen_color, font_color='black')
+        self.check_label = textBox(250, 370, 130, 30, font=20, color=self.screen_color, font_color='black')
         self.acc_input = textBox(400, 270, 200, 30, font=20, color="#dddddd", font_color='black', x_format='left')
-        self.psw_input = textBox(400, 320, 200, 30, font=20, color="#dddddd", font_color='black', x_format='left')
-        self.register_button = Button(400, 480, 200, 40, "REGISTER", font=20, button_color='#afeeee', text_color='black')
-        self.tip_box = textBox(300, 370, 400, 100, font=18, color=self.screen_color, font_color='red')
-    
+        self.psw_input = textBox(400, 320, 200, 30, font=20, color="#dddddd", font_color='black', x_format='left',psw=True)
+        self.check_input = textBox(400, 370, 200, 30, font=20, color="#dddddd", font_color='black', x_format='left',psw=True)
+        self.register_button = Button(400, 530, 200, 40, "REGISTER", font=20, button_color='#afeeee', text_color='black')
+        self.tip_box = textBox(300, 420, 400, 100, font=18, color=self.screen_color, font_color='red')
+
     def register_action(self):
         self.info_box.input("Please input account_name and password to create an account")
         self.psw_label.input("Password:")
         self.acc_label.input("Account:")
-        self.tip_box.show = False
+        self.check_label.input("Check:")
         while(True):
             check_event(button = [self.home_button,self.sub_button,self.exit_button,self.register_button],\
-                input= [self.psw_input,self.acc_input])
+                input= [self.psw_input,self.acc_input,self.check_input])
             if self.exit_button.active:
                 self.exit()
             elif self.home_button.active:
@@ -470,12 +474,14 @@ class SM():
                 self.register_button.active = False
                 acc = self.acc_input.text
                 psw = self.psw_input.text
-                if (acc == "" or psw == ""):
+                check = self.check_input.text
+                if (acc == "" or psw == "" or check == ""):
                     self.tip_box.input("Account or password cannot be empty")
+                elif (psw != check):
+                    self.tip_box.input("Entered passwords differ!")
                 else:
                     result = self.shell.register(acc,psw)
                     if result:
-                        self.tip_box.show = True
                         message = "Successfully create an account\n"
                         message += "Account:  {} \n".format(acc)
                         message += "Password: {} ".format(psw)
@@ -484,9 +490,10 @@ class SM():
                         self.tip_box.input("Account already exists")
                 self.acc_input.input("")
                 self.psw_input.input("")
+                self.check_input.input("")
                 
-            self.update_screen([self.title,self.acc_label,self.psw_label,self.acc_input,self.register_button,
-                                self.psw_input,self.exit_button,self.home_button,self.tip_box,self.info_box]) 
+            self.update_screen([self.title,self.acc_label,self.psw_label,self.acc_input,self.register_button,self.check_label,
+                                self.psw_input,self.exit_button,self.home_button,self.tip_box,self.info_box,self.check_input]) 
     
     def team_init(self):
         message  = "Schedule Management Software\n\n"
@@ -637,6 +644,7 @@ class Button:
         self.rect = pg.Rect(x, y, w, h)
         self.msg = msg
         self.show = True
+        self.force_check = False
         self.prep_msg(msg)
 
     def prep_msg(self, msg):
@@ -665,12 +673,13 @@ class textBox:
     def __init__(self, x, y, w, h, font=20,color='white',font_color='black'
                  ,font_name="Times New Roman",ttf=False,x_format='center',y_format='center'
                  ,x_space=5,y_space=5,border_radius=10,bold=True,italic=False,
-                 border=False,border_width=2,border_color="black"):
+                 border=False,border_width=2,border_color="black",psw=False):
         self.rect = pg.Rect(x, y, w, h)
         self.click =  False
         self.color = pg.Color(color)
         self.font_color = pg.Color(font_color)
         self.text = ""
+        self.psw = psw
         self.write = True
         self.ttf = ttf
         self.bold = bold
@@ -738,12 +747,16 @@ class textBox:
             pg.draw.rect(screen, self.color, self.rect, border_radius=self.border_radius)
         else:
             pg.draw.rect(screen, self.color, self.rect, border_radius=self.border_radius)
-            # 绘制文本
+        # 绘制文本
+        if self.psw:
+            masked_text = '•' * len(self.text)
+        else:
+            masked_text = self.text
         self.texts = []
         current_text = ''
-        for i in range(len(self.text)):
-            if(self.text[i] != '\n'):
-                current_text += self.text[i]
+        for i in range(len(masked_text)):
+            if(masked_text[i] != '\n'):
+                current_text += masked_text[i]
             else:
                 self.texts.append(current_text)
                 current_text = ''
