@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_main.cpp" "CMakeFiles/schedule.dir/sched_main.cpp.o" "gcc" "CMakeFiles/schedule.dir/sched_main.cpp.o.d"
-  "/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_manage.cpp" "CMakeFiles/schedule.dir/sched_manage.cpp.o" "gcc" "CMakeFiles/schedule.dir/sched_manage.cpp.o.d"
+  "/mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_main.cpp" "CMakeFiles/schedule.dir/sched_main.cpp.o" "gcc" "CMakeFiles/schedule.dir/sched_main.cpp.o.d"
+  "/mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_manage.cpp" "CMakeFiles/schedule.dir/sched_manage.cpp.o" "gcc" "CMakeFiles/schedule.dir/sched_manage.cpp.o.d"
   )
 
 # Targets to which this target links.

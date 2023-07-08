@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/heatingma/Desktop/WORK/NIS_WORK/c_sources
+CMAKE_SOURCE_DIR = /mnt/hgfs/share/LINUX-SOURCES/c_sources
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build
+CMAKE_BINARY_DIR = /mnt/hgfs/share/LINUX-SOURCES/c_sources/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/schedule.dir/depend.make
@@ -72,30 +72,30 @@ include CMakeFiles/schedule.dir/flags.make
 CMakeFiles/schedule.dir/sched_main.cpp.o: CMakeFiles/schedule.dir/flags.make
 CMakeFiles/schedule.dir/sched_main.cpp.o: ../sched_main.cpp
 CMakeFiles/schedule.dir/sched_main.cpp.o: CMakeFiles/schedule.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/schedule.dir/sched_main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule.dir/sched_main.cpp.o -MF CMakeFiles/schedule.dir/sched_main.cpp.o.d -o CMakeFiles/schedule.dir/sched_main.cpp.o -c /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/share/LINUX-SOURCES/c_sources/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/schedule.dir/sched_main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule.dir/sched_main.cpp.o -MF CMakeFiles/schedule.dir/sched_main.cpp.o.d -o CMakeFiles/schedule.dir/sched_main.cpp.o -c /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_main.cpp
 
 CMakeFiles/schedule.dir/sched_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/schedule.dir/sched_main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_main.cpp > CMakeFiles/schedule.dir/sched_main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_main.cpp > CMakeFiles/schedule.dir/sched_main.cpp.i
 
 CMakeFiles/schedule.dir/sched_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/schedule.dir/sched_main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_main.cpp -o CMakeFiles/schedule.dir/sched_main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_main.cpp -o CMakeFiles/schedule.dir/sched_main.cpp.s
 
 CMakeFiles/schedule.dir/sched_manage.cpp.o: CMakeFiles/schedule.dir/flags.make
 CMakeFiles/schedule.dir/sched_manage.cpp.o: ../sched_manage.cpp
 CMakeFiles/schedule.dir/sched_manage.cpp.o: CMakeFiles/schedule.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/schedule.dir/sched_manage.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule.dir/sched_manage.cpp.o -MF CMakeFiles/schedule.dir/sched_manage.cpp.o.d -o CMakeFiles/schedule.dir/sched_manage.cpp.o -c /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_manage.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/share/LINUX-SOURCES/c_sources/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/schedule.dir/sched_manage.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/schedule.dir/sched_manage.cpp.o -MF CMakeFiles/schedule.dir/sched_manage.cpp.o.d -o CMakeFiles/schedule.dir/sched_manage.cpp.o -c /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_manage.cpp
 
 CMakeFiles/schedule.dir/sched_manage.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/schedule.dir/sched_manage.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_manage.cpp > CMakeFiles/schedule.dir/sched_manage.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_manage.cpp > CMakeFiles/schedule.dir/sched_manage.cpp.i
 
 CMakeFiles/schedule.dir/sched_manage.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/schedule.dir/sched_manage.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_manage.cpp -o CMakeFiles/schedule.dir/sched_manage.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_manage.cpp -o CMakeFiles/schedule.dir/sched_manage.cpp.s
 
 # Object files for target schedule
 schedule_OBJECTS = \
@@ -109,7 +109,7 @@ schedule: CMakeFiles/schedule.dir/sched_main.cpp.o
 schedule: CMakeFiles/schedule.dir/sched_manage.cpp.o
 schedule: CMakeFiles/schedule.dir/build.make
 schedule: CMakeFiles/schedule.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable schedule"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/hgfs/share/LINUX-SOURCES/c_sources/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable schedule"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/schedule.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -121,6 +121,6 @@ CMakeFiles/schedule.dir/clean:
 .PHONY : CMakeFiles/schedule.dir/clean
 
 CMakeFiles/schedule.dir/depend:
-	cd /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/heatingma/Desktop/WORK/NIS_WORK/c_sources /home/heatingma/Desktop/WORK/NIS_WORK/c_sources /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles/schedule.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/hgfs/share/LINUX-SOURCES/c_sources/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/hgfs/share/LINUX-SOURCES/c_sources /mnt/hgfs/share/LINUX-SOURCES/c_sources /mnt/hgfs/share/LINUX-SOURCES/c_sources/build /mnt/hgfs/share/LINUX-SOURCES/c_sources/build /mnt/hgfs/share/LINUX-SOURCES/c_sources/build/CMakeFiles/schedule.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/schedule.dir/depend
 

@@ -1,7 +1,7 @@
 CMakeFiles/schedule.dir/sched_manage.cpp.o: \
- /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_manage.cpp \
+ /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_manage.cpp \
  /usr/include/stdc-predef.h \
- /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_manage.h \
+ /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_manage.h \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

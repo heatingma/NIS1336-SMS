@@ -1,5 +1,5 @@
 CMakeFiles/schedule.dir/sched_main.cpp.o: \
- /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_main.cpp \
+ /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -145,7 +145,7 @@ CMakeFiles/schedule.dir/sched_main.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/cstring \
  /usr/include/string.h /usr/include/strings.h \
- /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/sched_manage.h \
+ /mnt/hgfs/share/LINUX-SOURCES/c_sources/sched_manage.h \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \

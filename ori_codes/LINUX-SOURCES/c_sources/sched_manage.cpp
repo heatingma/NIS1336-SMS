@@ -89,6 +89,13 @@ string TASK::print_info(void){
     return oss.str();
 }
 
+string TASK::print_check_info(void){
+    ostringstream oss;
+    oss << setw(10) << left << task_name << " "
+        << setw(19) << left << time_ttos(start_time) << "\n";
+    return oss.str();
+}
+
 /*----------------------*  USER  *------------------------*/
 
 int ascii_sum_mod20(string str) {
@@ -439,7 +446,6 @@ bool GUEST::deleteTask(int id)
         if (thistask.get_id() == id) 
         {
             tasks.erase(pair);
-            cout << id << " task has been removed" << endl;
             return true;
         }
     }
@@ -469,32 +475,33 @@ GUEST::~GUEST()
     return;
 }
 
-void GUEST::checktask()
+int GUEST::checktask()
 {
-
+    int flag = 0;
     time_t now = time(NULL);
     for (auto it = tasks.begin(); it != tasks.end(); ) 
     {  
         TASK thisTask = it->second; 
         if(now > thisTask.get_remind_time()){
-            cout << "MISS:" << thisTask.print_info(); 
+            cout << thisTask.print_check_info(); 
             it = tasks.erase(it);  
         }  
         else break;   // 未删除则自增迭代器 
+        flag = 1;
     }
     if (tasks.empty()) 
     {
         cout << "There is no left task now" << endl; 
-        return;
+        flag = -1;
     }
     TASK thisTask =  (*tasks.begin()).second;
 
     if (now == thisTask.get_remind_time())
     {
-        cout << "TODO:" << thisTask.print_info();
+        cout << thisTask.print_check_info();
         int id = thisTask.get_id();
         deleteTask(id);
+        flag = 2;
     }
-    return;
+    return flag;
 }
-

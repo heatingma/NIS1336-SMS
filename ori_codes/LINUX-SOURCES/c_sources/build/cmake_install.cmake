@@ -1,4 +1,4 @@
-# Install script for directory: /home/heatingma/Desktop/WORK/NIS_WORK/c_sources
+# Install script for directory: /mnt/hgfs/share/LINUX-SOURCES/c_sources
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/hgfs/share/LINUX-SOURCES/c_sources/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

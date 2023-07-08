@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/heatingma/Desktop/WORK/NIS_WORK/c_sources
+CMAKE_SOURCE_DIR = /mnt/hgfs/share/LINUX-SOURCES/c_sources
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build
+CMAKE_BINARY_DIR = /mnt/hgfs/share/LINUX-SOURCES/c_sources/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/schedule.dir/clean
 CMakeFiles/schedule.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule.dir/build.make CMakeFiles/schedule.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/schedule.dir/build.make CMakeFiles/schedule.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles --progress-num=1,2,3 "Built target schedule"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/hgfs/share/LINUX-SOURCES/c_sources/build/CMakeFiles --progress-num=1,2,3 "Built target schedule"
 .PHONY : CMakeFiles/schedule.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/schedule.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/hgfs/share/LINUX-SOURCES/c_sources/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/schedule.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/heatingma/Desktop/WORK/NIS_WORK/c_sources/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/hgfs/share/LINUX-SOURCES/c_sources/build/CMakeFiles 0
 .PHONY : CMakeFiles/schedule.dir/rule
 
 # Convenience name for target.
