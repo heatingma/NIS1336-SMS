@@ -83,10 +83,15 @@ def get_seconds(year, month, day, hour, minute):
     day = int(day)
     hour = int(hour)
     minute = int(minute)
-    start_time = datetime(1970, 1, 1, 0, 0, 0)
-    end_time = datetime(year, month, day, hour, minute, 0)
-    time_delta = end_time - start_time
-    return int(time_delta.total_seconds())
+    date_time = datetime(year, month, day, hour, minute)
+    timestamp = int(date_time.timestamp())
+    return timestamp
+
+def format_date_to_int(date_string:str):
+    date_format = "%Y-%m-%d %H:%M:%S.%f"
+    date_time = datetime.strptime(date_string, date_format)
+    timestamp = int(date_time.timestamp())
+    return timestamp
 
 def format_date_time(year, month, day, hour, minute):
     year = int(year)
