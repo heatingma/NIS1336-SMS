@@ -424,20 +424,25 @@ class SM():
                 task_name = self.name_input_box.text.replace(" ","_")
                 task_type = type_to_num(self.type_drop.selected)
                 task_prio = priority_to_num(self.prio_drop.selected)
-                sttime = self.sttime_drop.get_time()
-                rdtime = self.rdtime_drop.get_time()
-                result = self.shell.add_task(task_name,task_prio,task_type,sttime,rdtime,self.user)
-                if (result == -1):
-                    message = "Task {} already exists".format(task_name)
-                    self.tip_box.change_font_color("red")
-                    self.tip_box.change_font_size(24)
+                sttime,sttime_num = self.sttime_drop.get_time()
+                rdtime,rdtime_num = self.rdtime_drop.get_time()
+                if sttime_num <= rdtime_num:
+                    message = "Start Time is not allowed before the Reminder Time"
+                elif rdtime_num <= int(datetime.now().timestamp()):
+                    message = "Reminder time is not allowed before the current time"
                 else:
-                    self.tip_box.change_font_color("blue")
-                    message = "Add a new task successfully\n"
-                    message += "任务ID: {}  任务名称: {}  优先级: {} 类别: {}\n".format(result,task_name,
-                                self.prio_drop.selected,self.type_drop.selected)
-                    message += "开始时间: {}  提醒时间: {}\n".format(sttime,rdtime)
-                    self.tip_box.change_font_size(20)
+                    result = self.shell.add_task(task_name,task_prio,task_type,sttime,rdtime,self.user)
+                    if (result == -1):
+                        message = "Task {} already exists".format(task_name)
+                        self.tip_box.change_font_color("red")
+                        self.tip_box.change_font_size(24)
+                    else:
+                        self.tip_box.change_font_color("blue")
+                        message = "Add a new task successfully\n"
+                        message += "任务ID: {}  任务名称: {}  优先级: {} 类别: {}\n".format(result,task_name,
+                                    self.prio_drop.selected,self.type_drop.selected)
+                        message += "开始时间: {}  提醒时间: {}\n".format(sttime,rdtime)
+                        self.tip_box.change_font_size(20)
                 self.tip_box.input(message)
                 
 
@@ -1085,7 +1090,7 @@ class TimeDropdown:
         if (yy is None or mm is None or dd is None or hh is None or ss is None):
             return None
         else:
-            return format_date_time(yy,mm,dd,hh,ss)
+            return format_date_time(yy,mm,dd,hh,ss), get_seconds(yy,mm,dd,hh,ss)
 
 class Timer:
     def __init__(self, x, y, w, h, font_name='Times New Roman', font_size=20, font_color="black", bg_color="white"):
